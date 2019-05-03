@@ -1,0 +1,25 @@
+api.call("Get", {
+    "typeName": "Trailer"
+}, function(result) {
+    console.log("Trailers: ", result);
+    
+    var trailerCount = 0;
+    
+    result.forEach(function(element) {
+        api.call("Remove", {
+            "typeName": "Trailer",
+            "entity": element
+        }, function(result) {
+            trailerCount += 1;
+            console.log("Removed");
+        }, function(e) {
+            console.error("Failed:", e);
+        });
+        
+    });
+    
+    console.log("Removed: ", trailerCount, " Trailers");
+    
+}, function(e) {
+    console.error("Failed:", e);
+});
