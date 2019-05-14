@@ -1,0 +1,23 @@
+//Replace the placeholder data with all required ID's 
+//Must match the same format
+var ary = ['ID1', 'ID2', 'ID3'];
+
+//Do not touch anything below this line
+var zoneCount = 0;
+
+ary.forEach(function(element) {
+  zoneCount++;
+    api.call("Remove", {
+        "typeName": "Zone",
+        "entity": {
+            "id" : element
+        }
+    }, function(result) {
+        console.log("Done: ", result);
+    }, function(e) {
+        console.error("Failed:", e);
+    });
+  
+});
+
+console.log(zoneCount);
