@@ -1,0 +1,23 @@
+//Get all currently active devices and output their ID's
+
+api.call("Get", {
+    "typeName": "Device"
+}, function(result) {
+    console.log("Done: ", result);
+    
+    var count = 0;
+    var deviceList = "";
+    
+    result.forEach(function(element) {
+        if(element.activeTo === "2050-01-01"){
+            deviceList = deviceList + element.id + ", ";
+            count++;
+        }
+    });
+    console.log(deviceList);
+    console.log(count);
+    
+}, function(e) {
+    console.error("Failed:", e);
+});
+/*opt nomin*/
